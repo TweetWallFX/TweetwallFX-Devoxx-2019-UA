@@ -55,7 +55,6 @@ public class ImageMosaicCreateStep implements Step {
     private ImageView[][] rects;
     private Bounds[][] bounds;
     private Pane pane;
-    private int count = 0;
 
     private ImageMosaicCreateStep(Config config) {
         this.config = config;
