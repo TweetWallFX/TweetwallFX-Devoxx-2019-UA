@@ -97,14 +97,6 @@
             },
             {
                 "stepClassName": "org.tweetwallfx.devoxx19ua.steps.Devoxx19FlipOutScheduleWeek"
-            },
-            {
-                "stepClassName": "org.tweetwallfx.devoxx19ua.steps.Devoxx19ShowSchedule",
-                "config": {
-                    "layoutX": 103,
-                    "layoutY": 200,
-                    "stepDuration": 500
-                }
             }
         ],
         "dataProviderSettings": [
