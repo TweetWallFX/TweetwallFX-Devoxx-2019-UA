@@ -29,8 +29,12 @@ project(':cfp-impl').name = 'tweetwallfx-devoxx-2019-ua-cfp-impl'
 include ':stepengine'
 project(':stepengine').name = 'tweetwallfx-devoxx-2019-ua-stepengine'
 
-include ':cinema2k'
-project(':cinema2k').name = 'tweetwallfx-devoxx-2019-ua-cinema2k'
+include ':cinema400x250'
+project(':cinema400x250').name = 'tweetwallfx-devoxx-2019-ua-cinema400x250'
+include ':cinema400x300'
+project(':cinema400x300').name = 'tweetwallfx-devoxx-2019-ua-cinema400x300'
+include ':cinema800x400'
+project(':cinema800x400').name = 'tweetwallfx-devoxx-2019-ua-cinema800x400'
 
 if (file('../TweetWallFX').exists()) {
     includeBuild '../TweetWallFX'

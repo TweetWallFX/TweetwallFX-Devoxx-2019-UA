@@ -287,4 +287,6 @@ task createFolders(description: 'Creates the folders for the projects and source
     }
 }
 
-task runCinema2K dependsOn ':tweetwallfx-devoxx-2019-ua-cinema2k:run'
+task runCinema400x250 dependsOn ':tweetwallfx-devoxx-2019-ua-cinema400x250:run'
+task runCinema400x300 dependsOn ':tweetwallfx-devoxx-2019-ua-cinema400x300:run'
+task runCinema800x400 dependsOn ':tweetwallfx-devoxx-2019-ua-cinema800x400:run'
