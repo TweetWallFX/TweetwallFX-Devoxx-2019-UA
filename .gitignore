@@ -3,6 +3,7 @@
 **/nbproject/private/
 **/.nb-gradle
 **/.gradle
+**/logs/
 **/MyOAuth.properties
 
 # Eclipse specific
