@@ -27,6 +27,7 @@ import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
@@ -281,15 +282,16 @@ public class Devoxx2019UACFPClient implements CFPClient {
         final ScheduleSlot result = new ScheduleSlot();
 
         result.setDay(Instant.parse(input.getFromDate()).atZone(ZoneId.systemDefault()).getDayOfWeek().name().toLowerCase(Locale.ENGLISH));
-        result.setFromTime(input.getFromDate());
+        result.setFromTime(Instant.parse(input.getFromDate()).atOffset(ZoneOffset.UTC).toOffsetTime().toString().replaceAll("Z$", ""));
         result.setFromTimeMillis(Instant.parse(input.getFromDate()).toEpochMilli());
 //        result.setNotAllocated(input.);
         result.setRoomCapacity(-1);
         result.setRoomId(Integer.toString(input.getRoomId()));
         result.setRoomName(input.getRoomName());
 //        result.setRoomSetup(input.);
+        result.setRoomSetup("");
         result.setSlotId(Integer.toString(input.getTalkId()));
-        result.setToTime(input.getToDate());
+        result.setToTime(Instant.parse(input.getToDate()).atOffset(ZoneOffset.UTC).toOffsetTime().toString().replaceAll("Z$", ""));
         result.setToTimeMillis(Instant.parse(input.getToDate()).toEpochMilli());
 
         if (input.isSessionTypeBreak()) {
