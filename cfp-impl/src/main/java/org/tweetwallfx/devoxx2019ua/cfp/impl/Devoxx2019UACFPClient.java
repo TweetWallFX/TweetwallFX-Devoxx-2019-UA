@@ -27,7 +27,9 @@ import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
@@ -81,6 +83,11 @@ public class Devoxx2019UACFPClient implements CFPClient {
     };
     private static final GenericType<List<V2Track>> GT_TRACK = new GenericType<List<V2Track>>() {
     };
+    private static final DateTimeFormatter HOUR_MINUTE = new DateTimeFormatterBuilder()
+            .appendValue(ChronoField.HOUR_OF_DAY, 2)
+            .appendLiteral(':')
+            .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+            .toFormatter();
     private final String eventUri;
     private final String votingResultsUri;
 
@@ -282,7 +289,7 @@ public class Devoxx2019UACFPClient implements CFPClient {
         final ScheduleSlot result = new ScheduleSlot();
 
         result.setDay(Instant.parse(input.getFromDate()).atZone(ZoneId.systemDefault()).getDayOfWeek().name().toLowerCase(Locale.ENGLISH));
-        result.setFromTime(Instant.parse(input.getFromDate()).atOffset(ZoneOffset.UTC).toOffsetTime().toString().replaceAll("Z$", ""));
+        result.setFromTime(Instant.parse(input.getFromDate()).atZone(ZoneId.systemDefault()).toOffsetDateTime().format(HOUR_MINUTE));
         result.setFromTimeMillis(Instant.parse(input.getFromDate()).toEpochMilli());
 //        result.setNotAllocated(input.);
         result.setRoomCapacity(-1);
@@ -291,7 +298,7 @@ public class Devoxx2019UACFPClient implements CFPClient {
 //        result.setRoomSetup(input.);
         result.setRoomSetup("");
         result.setSlotId(Integer.toString(input.getTalkId()));
-        result.setToTime(Instant.parse(input.getToDate()).atOffset(ZoneOffset.UTC).toOffsetTime().toString().replaceAll("Z$", ""));
+        result.setToTime(Instant.parse(input.getToDate()).atZone(ZoneId.systemDefault()).toOffsetDateTime().format(HOUR_MINUTE));
         result.setToTimeMillis(Instant.parse(input.getToDate()).toEpochMilli());
 
         if (input.isSessionTypeBreak()) {
