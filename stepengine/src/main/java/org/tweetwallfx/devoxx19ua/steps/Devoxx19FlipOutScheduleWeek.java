@@ -60,8 +60,7 @@ public class Devoxx19FlipOutScheduleWeek implements Step {
     @Override
     public boolean shouldSkip(final MachineContext context) {
         WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
-        return null == wordleSkin.getNode().lookup("#scheduleNode")
-                || context.getDataProvider(TopTalksWeekDataProvider.class).getFilteredSessionData().isEmpty();
+        return null == wordleSkin.getNode().lookup("#scheduleNode");
     }
 
     /**
